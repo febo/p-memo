@@ -59,7 +59,11 @@ fn test_valid_ascii_one_accounts() {
     let signer = Pubkey::new_unique();
     let instruction = instruction(MEMO.as_bytes(), Some(&[signer]));
 
-    mollusk.process_instruction(&instruction, &[(signer, Account::default())]);
+    mollusk.process_and_validate_instruction(
+        &instruction,
+        &[(signer, Account::default())],
+        &[Check::success()],
+    );
 }
 
 #[test]
@@ -69,12 +73,13 @@ fn test_valid_ascii_two_accounts() {
     let signers = [Pubkey::new_unique(), Pubkey::new_unique()];
     let instruction = instruction(MEMO.as_bytes(), Some(&signers));
 
-    mollusk.process_instruction(
+    mollusk.process_and_validate_instruction(
         &instruction,
         &signers
             .iter()
             .map(|signer| (*signer, Account::default()))
             .collect::<Vec<(Pubkey, Account)>>(),
+        &[Check::success()],
     );
 }
 
@@ -86,11 +91,12 @@ fn test_valid_ascii_duplicated_accounts() {
     let duplicated = Pubkey::new_unique();
     let instruction = instruction(MEMO.as_bytes(), Some(&[duplicated, unique, duplicated]));
 
-    mollusk.process_instruction(
+    mollusk.process_and_validate_instruction(
         &instruction,
         &[
             (duplicated, Account::default()),
             (unique, Account::default()),
         ],
+        &[Check::success()],
     );
 }
