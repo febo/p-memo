@@ -8,14 +8,14 @@
   A <code>pinocchio</code>-based Memo program.
 </p>
 
-# Overview
+## Overview
 
 A re-implementation of SPL Memo program using [`pinocchio`](https://github.com/anza-xyz/pinocchio) inspired by Cavey's [ASMEMO](https://x.com/cavemanloverboy/status/1898416863056384402) program.
 
 > [!NOTE]
 > While the program provides the same functionality as SPL Memo, the output is simplified to reduce CUs by omitting some of the log messages.
 
-# Features
+## Features
 
 Program size: `1280` bytes
 
