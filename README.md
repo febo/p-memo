@@ -2,7 +2,7 @@
   <code>p-memo</code>
 </h1>
 <p align="center">
-  <img width="400" alt="p-memo" src="https://github.com/user-attachments/assets/ba1c5f0d-db2f-457d-8f7e-e62fd564e5e7" />
+  <img width="400" alt="p-memo" src="https://github.com/user-attachments/assets/892da91c-71e8-4ed9-b3cc-b0b97f29ac2e" />
 </p>
 <p align="center">
   A <code>pinocchio</code>-based Memo program.
