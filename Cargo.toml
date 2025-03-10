@@ -1,0 +1,24 @@
+[package]
+name = "p-memo"
+version = "0.0.0"
+description = "A pinocchio-based Memo (aka 'p-memo') program"
+repository = "https://github.com/febo/p-memo"
+license = "Apache-2.0"
+edition = "2021"
+readme = "./README.md"
+
+[lib]
+crate-type = ["cdylib"]
+
+[lints.rust.unexpected_cfgs]
+level = "warn"
+check-cfg = ['cfg(target_os, values("solana"))']
+
+[dependencies]
+pinocchio = { version = "0.7", git = "https://github.com/anza-xyz/pinocchio.git" }
+
+[dev-dependencies]
+mollusk-svm = "0.1"
+solana-account = "2.2.1"
+solana-instruction = "2.2.1"
+solana-pubkey = "2.2.1"
