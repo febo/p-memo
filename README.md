@@ -12,8 +12,9 @@
 
 A re-implementation of SPL Memo program using [`pinocchio`](https://github.com/anza-xyz/pinocchio) inspired by Cavey's [ASMEMO](https://x.com/cavemanloverboy/status/1898416863056384402) program.
 
-> [!NOTE]
-> While the program provides the same functionality as SPL Memo, the output is simplified to reduce CUs by omitting some of the log messages.
+There are two "version" included:
+* Without additional logs (`logging` feature disabled)
+* Same output as SPL Memo (`logging` feature enabled). CUs consumption increases in this case since the signer pubkeys are logged.
 
 ## Features
 
@@ -21,11 +22,11 @@ Program size: `1280` bytes
 
 CU comsumption:
 
-| \# signers |  CU |
-| ---------- | --- |
-| 0          | 109 |
-| 1          | 125 |
-| 2          | 141 |
+| \# signers |  CU |  CU (`+logging`) |
+| ---------- | --- | ---------------- |
+| 0          | 109 | 632              |
+| 1          | 125 | 2320             |
+| 2          | 141 | 3992             |
 
 ## Building
 

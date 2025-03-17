@@ -671,6 +671,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "28dea519a9695b9977216879a3ebfddf92f1c08c05d984f8996aecd6ecdc811d"
 
 [[package]]
+name = "five8"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a75b8549488b4715defcb0d8a8a1c1c76a80661b5fa106b4ca0e7fce59d7d875"
+dependencies = [
+ "five8_core",
+]
+
+[[package]]
 name = "five8_const"
 version = "0.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1507,8 +1516,10 @@ dependencies = [
 name = "p-memo"
 version = "0.0.0"
 dependencies = [
+ "five8",
  "mollusk-svm",
  "pinocchio",
+ "pinocchio-log",
  "solana-account",
  "solana-instruction",
  "solana-pubkey",
@@ -1573,7 +1584,25 @@ checksum = "8b870d8c151b6f2fb93e84a13146138f05d02ed11c7e7c54f8826aaaf7c9f184"
 [[package]]
 name = "pinocchio"
 version = "0.7.1"
-source = "git+https://github.com/anza-xyz/pinocchio.git#94872e64ba615a310f9ae879027fa4e805217b25"
+source = "git+https://github.com/anza-xyz/pinocchio.git#52afb985814e3c175a2a73b5c6a597ed34671b06"
+
+[[package]]
+name = "pinocchio-log"
+version = "0.3.0"
+source = "git+https://github.com/anza-xyz/pinocchio.git#52afb985814e3c175a2a73b5c6a597ed34671b06"
+dependencies = [
+ "pinocchio-log-macro",
+]
+
+[[package]]
+name = "pinocchio-log-macro"
+version = "0.3.0"
+source = "git+https://github.com/anza-xyz/pinocchio.git#52afb985814e3c175a2a73b5c6a597ed34671b06"
+dependencies = [
+ "quote",
+ "regex",
+ "syn 1.0.109",
+]
 
 [[package]]
 name = "pkg-config"

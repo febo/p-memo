@@ -14,8 +14,13 @@ crate-type = ["cdylib"]
 level = "warn"
 check-cfg = ['cfg(target_os, values("solana"))']
 
+[features]
+logging = ["dep:five8", "dep:pinocchio-log"]
+
 [dependencies]
+five8 = { version = "0.2.1", optional = true }
 pinocchio = { version = "0.7", git = "https://github.com/anza-xyz/pinocchio.git" }
+pinocchio-log = { version = "0.3", git = "https://github.com/anza-xyz/pinocchio.git", optional = true }
 
 [dev-dependencies]
 mollusk-svm = "0.1"
