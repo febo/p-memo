@@ -12,9 +12,28 @@
 
 A re-implementation of SPL Memo program using [`pinocchio`](https://github.com/anza-xyz/pinocchio) inspired by Cavey's [ASMEMO](https://x.com/cavemanloverboy/status/1898416863056384402) program.
 
-There are two "version" included:
-* Without additional logs (`logging` feature disabled)
-* Same output as SPL Memo (`logging` feature enabled). CUs consumption increases in this case since the signer pubkeys are logged.
+There are three "version" included:
+1. no program output, feature `xs` (extra small).
+   ```
+   Program PMemo11111111111111111111111111111111111111 invoke [1]
+   Program PMemo11111111111111111111111111111111111111 consumed 22 of 1400000 compute units
+   Program PMemo11111111111111111111111111111111111111 success
+   ```
+2. logs the memo message only, same as ASMEMO.
+   ```
+   Program PMemo11111111111111111111111111111111111111 invoke [1]
+   Program log: why does spl memo use 36000 cus to print len 60 msg of ascii
+   Program PMemo11111111111111111111111111111111111111 consumed 125 of 1400000 compute units
+   Program PMemo11111111111111111111111111111111111111 success
+   ```
+3. same output as SPL Memo, feature `xl` (extra large).
+   ```
+   Program PMemo11111111111111111111111111111111111111 invoke [1]
+   Program log: Signed by 1111111QLbz7JHiBTspS962RLKV8GndWFwiEaqKM
+   Program log: Memo (len 60): "why does spl memo use 36000 cus to print len 60 msg of ascii"
+   Program PMemo11111111111111111111111111111111111111 consumed 2320 of 1400000 compute units
+   Program PMemo11111111111111111111111111111111111111 success
+   ```
 
 ## Features
 
@@ -22,11 +41,11 @@ Program size: `1280` bytes
 
 CU comsumption:
 
-| \# signers |  CU |  CU (`+logging`) |
-| ---------- | --- | ---------------- |
-| 0          | 109 | 632              |
-| 1          | 125 | 2320             |
-| 2          | 141 | 3992             |
+| \# signers | CU (`xs`) |  CU        | CU (`xl`)       | CU (SPL Memo) |
+| ---------- | --------- | ---------- | --------------- | --------------|
+| 0          | 4         | 109        | 632             | 4685          |
+| 1          | 22        | 125        | 2320            | 16213         |
+| 2          | 38        | 141        | 3992            | 28133         |
 
 ## Building
 
@@ -35,12 +54,16 @@ To build the programs from the root directory of the repository:
 cargo build-sbf
 ```
 
+You can enable the features `xs` or `xl` by using `--features <FEATURE>` in the build command.
+
 ## Testing
 
 To run the tests:
 ```bash
 cargo test-sbf
 ```
+
+You can enable the features `xs` or `xl` by using `--features <FEATURE>` in the test command.
 
 ## License
 

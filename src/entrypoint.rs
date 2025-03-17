@@ -4,12 +4,36 @@ use pinocchio::{
     program_error::ProgramError,
     ProgramResult,
 };
-#[cfg(feature = "logging")]
+#[cfg(feature = "xl")]
 use pinocchio_log::log;
 
 lazy_program_entrypoint!(process_instruction);
 
-#[cfg(feature = "logging")]
+#[cfg(not(feature = "xl"))]
+pub fn process_instruction(mut context: InstructionContext) -> ProgramResult {
+    // Process signer accounts (if any).
+    while context.remaining() > 0 {
+        // Duplicated accounts are implicitly checked since at least one of the
+        // "copies" must be a signer.
+        if let MaybeAccount::Account(account) = context.next_account()? {
+            if !account.is_signer() {
+                return Err(ProgramError::MissingRequiredSignature);
+            }
+        }
+    }
+
+    #[cfg(not(feature = "xs"))]
+    // SAFETY: All accounts have been processed and the syscall validates if
+    // the data is valid UTF-8.
+    unsafe {
+        let instruction_data = context.instruction_data_unchecked();
+        pinocchio::syscalls::sol_log_(instruction_data.as_ptr(), instruction_data.len() as u64);
+    }
+
+    Ok(())
+}
+
+#[cfg(feature = "xl")]
 pub fn process_instruction(mut context: InstructionContext) -> ProgramResult {
     let mut output = [0u8; 44];
     let mut missing_required_signature = false;
@@ -45,28 +69,6 @@ pub fn process_instruction(mut context: InstructionContext) -> ProgramResult {
             ProgramError::InvalidInstructionData
         })?
     );
-
-    Ok(())
-}
-
-#[cfg(not(feature = "logging"))]
-pub fn process_instruction(mut context: InstructionContext) -> ProgramResult {
-    // Process signer accounts (if any).
-    while context.remaining() > 0 {
-        // Duplicated accounts are implicitly checked since at least one of the
-        // "copies" must be a signer.
-        if let MaybeAccount::Account(account) = context.next_account()? {
-            if !account.is_signer() {
-                return Err(ProgramError::MissingRequiredSignature);
-            }
-        }
-    }
-    // SAFETY: All accounts have been processed and the syscall validates if
-    // the data is valid UTF-8.
-    unsafe {
-        let instruction_data = context.instruction_data_unchecked();
-        pinocchio::syscalls::sol_log_(instruction_data.as_ptr(), instruction_data.len() as u64);
-    }
 
     Ok(())
 }

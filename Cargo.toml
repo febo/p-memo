@@ -15,7 +15,8 @@ level = "warn"
 check-cfg = ['cfg(target_os, values("solana"))']
 
 [features]
-logging = ["dep:five8", "dep:pinocchio-log"]
+xs = []
+xl = ["dep:five8", "dep:pinocchio-log"]
 
 [dependencies]
 five8 = { version = "0.2.1", optional = true }
