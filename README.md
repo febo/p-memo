@@ -47,6 +47,9 @@ CU comsumption:
 | 1          | 21        | 123        | 1957            | 16213         |
 | 2          | 36        | 136        | 3476            | 28133         |
 
+> [!NOTE]
+> Using Solana CLI `v2.2.13`.
+
 ## Building
 
 To build the programs from the root directory of the repository:
