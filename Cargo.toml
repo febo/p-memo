@@ -20,8 +20,8 @@ xl = ["dep:five8", "dep:pinocchio-log"]
 
 [dependencies]
 five8 = { version = "0.2.1", optional = true }
-pinocchio = { version = "0.7", git = "https://github.com/anza-xyz/pinocchio.git" }
-pinocchio-log = { version = "0.3", git = "https://github.com/anza-xyz/pinocchio.git", optional = true }
+pinocchio = { version = "0.8", git = "https://github.com/anza-xyz/pinocchio.git", branch = "febo/invoke-improvements" }
+pinocchio-log = { version = "0.4", optional = true, git = "https://github.com/anza-xyz/pinocchio.git", branch = "febo/invoke-improvements" }
 
 [dev-dependencies]
 mollusk-svm = "0.1"

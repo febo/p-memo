@@ -1583,21 +1583,21 @@ checksum = "8b870d8c151b6f2fb93e84a13146138f05d02ed11c7e7c54f8826aaaf7c9f184"
 
 [[package]]
 name = "pinocchio"
-version = "0.7.1"
-source = "git+https://github.com/anza-xyz/pinocchio.git#52afb985814e3c175a2a73b5c6a597ed34671b06"
+version = "0.8.4"
+source = "git+https://github.com/anza-xyz/pinocchio.git?branch=febo%2Finvoke-improvements#8dfa4c641d47eab6fc7df81e72b4115137e31892"
 
 [[package]]
 name = "pinocchio-log"
-version = "0.3.0"
-source = "git+https://github.com/anza-xyz/pinocchio.git#52afb985814e3c175a2a73b5c6a597ed34671b06"
+version = "0.4.0"
+source = "git+https://github.com/anza-xyz/pinocchio.git?branch=febo%2Finvoke-improvements#8dfa4c641d47eab6fc7df81e72b4115137e31892"
 dependencies = [
  "pinocchio-log-macro",
 ]
 
 [[package]]
 name = "pinocchio-log-macro"
-version = "0.3.0"
-source = "git+https://github.com/anza-xyz/pinocchio.git#52afb985814e3c175a2a73b5c6a597ed34671b06"
+version = "0.4.1"
+source = "git+https://github.com/anza-xyz/pinocchio.git?branch=febo%2Finvoke-improvements#8dfa4c641d47eab6fc7df81e72b4115137e31892"
 dependencies = [
  "quote",
  "regex",
