@@ -5,3 +5,4 @@
 mod entrypoint;
 
 pinocchio::no_allocator!();
+pinocchio::nostd_panic_handler!();
