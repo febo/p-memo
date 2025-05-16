@@ -1,6 +1,7 @@
 use mollusk_svm::{result::Check, Mollusk};
 use solana_account::Account;
-use solana_instruction::{error::InstructionError, AccountMeta, Instruction};
+use solana_instruction::{AccountMeta, Instruction};
+use solana_program_error::ProgramError;
 use solana_pubkey::Pubkey;
 
 /// Program ID for the p-memo program.
@@ -46,9 +47,7 @@ fn fail_test_invalid_ascii_no_accounts() {
     mollusk.process_and_validate_instruction(
         &instruction,
         &[],
-        &[Check::instruction_err(
-            InstructionError::ProgramFailedToComplete,
-        )],
+        &[Check::err(ProgramError::InvalidInstructionData)],
     );
 }
 

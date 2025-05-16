@@ -13,25 +13,25 @@
 A re-implementation of SPL Memo program using [`pinocchio`](https://github.com/anza-xyz/pinocchio) inspired by Cavey's [ASMEMO](https://x.com/cavemanloverboy/status/1898416863056384402) program.
 
 There are three "version" included:
-1. no program output, feature `xs` (extra small).
+1. same output as SPL Memo, branch `main`.
    ```
    Program PMemo11111111111111111111111111111111111111 invoke [1]
-   Program PMemo11111111111111111111111111111111111111 consumed 22 of 1400000 compute units
+   Program log: Signed by 1111111QLbz7JHiBTspS962RLKV8GndWFwiEaqKM
+   Program log: Memo (len 60): "why does spl memo use 36000 cus to print len 60 msg of ascii"
+   Program PMemo11111111111111111111111111111111111111 consumed 2320 of 1400000 compute units
    Program PMemo11111111111111111111111111111111111111 success
    ```
-2. logs the memo message only, same as ASMEMO.
+2. logs the memo message only, same as ASMEMO, branch `asmemo`
    ```
    Program PMemo11111111111111111111111111111111111111 invoke [1]
    Program log: why does spl memo use 36000 cus to print len 60 msg of ascii
    Program PMemo11111111111111111111111111111111111111 consumed 125 of 1400000 compute units
    Program PMemo11111111111111111111111111111111111111 success
    ```
-3. same output as SPL Memo, feature `xl` (extra large).
+3. no program output, branch `minimal`
    ```
    Program PMemo11111111111111111111111111111111111111 invoke [1]
-   Program log: Signed by 1111111QLbz7JHiBTspS962RLKV8GndWFwiEaqKM
-   Program log: Memo (len 60): "why does spl memo use 36000 cus to print len 60 msg of ascii"
-   Program PMemo11111111111111111111111111111111111111 consumed 2320 of 1400000 compute units
+   Program PMemo11111111111111111111111111111111111111 consumed 22 of 1400000 compute units
    Program PMemo11111111111111111111111111111111111111 success
    ```
 
@@ -41,11 +41,11 @@ Program size: `1280` bytes
 
 CU comsumption:
 
-| \# signers | CU (`xs`) |  CU        | CU (`xl`)       | CU (SPL Memo) |
-| ---------- | --------- | ---------- | --------------- | --------------|
-| 0          | 4         | 108        | 426             | 4685          |
-| 1          | 21        | 123        | 1957            | 16213         |
-| 2          | 36        | 136        | 3476            | 28133         |
+| \# signers | p-memo    | p-memo (asmemo) | p-memo (minimal) | SPL Memo      |
+| ---------- | --------- | --------------- | ---------------- | ------------- |
+| 0          | 4         | 108             | 426              | 4685          |
+| 1          | 21        | 123             | 1957             | 16213         |
+| 2          | 36        | 136             | 3476             | 28133         |
 
 > [!NOTE]
 > Using Solana CLI `v2.2.13`.
@@ -57,16 +57,12 @@ To build the programs from the root directory of the repository:
 cargo build-sbf
 ```
 
-You can enable the features `xs` or `xl` by using `--features <FEATURE>` in the build command.
-
 ## Testing
 
 To run the tests:
 ```bash
 cargo test-sbf
 ```
-
-You can enable the features `xs` or `xl` by using `--features <FEATURE>` in the test command.
 
 ## License
 

@@ -5,5 +5,3 @@
 mod entrypoint;
 
 pinocchio::no_allocator!();
-#[cfg(not(feature = "xl"))]
-pinocchio::nostd_panic_handler!();
