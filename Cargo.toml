@@ -15,9 +15,7 @@ level = "warn"
 check-cfg = ['cfg(target_os, values("solana"))']
 
 [dependencies]
-five8 = "0.2.1"
 pinocchio = { version = "0.8", git = "https://github.com/anza-xyz/pinocchio.git" }
-pinocchio-log = { version = "0.4", git = "https://github.com/anza-xyz/pinocchio.git" }
 
 [dev-dependencies]
 mollusk-svm = "0.1"
