@@ -13,7 +13,7 @@
 A re-implementation of SPL Memo program using [`pinocchio`](https://github.com/anza-xyz/pinocchio) inspired by Cavey's [ASMEMO](https://x.com/cavemanloverboy/status/1898416863056384402) program.
 
 There are three "version" included:
-1. same output as SPL Memo, branch `main`.
+1. same output as SPL Memo (branch `main`)
    ```
    Program PMemo11111111111111111111111111111111111111 invoke [1]
    Program log: Signed by 1111111QLbz7JHiBTspS962RLKV8GndWFwiEaqKM
@@ -21,14 +21,14 @@ There are three "version" included:
    Program PMemo11111111111111111111111111111111111111 consumed 2320 of 1400000 compute units
    Program PMemo11111111111111111111111111111111111111 success
    ```
-2. logs the memo message only, same as ASMEMO, branch `asmemo`
+2. logs the memo message only, same as ASMEMO (branch `asmemo`)
    ```
    Program PMemo11111111111111111111111111111111111111 invoke [1]
    Program log: why does spl memo use 36000 cus to print len 60 msg of ascii
    Program PMemo11111111111111111111111111111111111111 consumed 125 of 1400000 compute units
    Program PMemo11111111111111111111111111111111111111 success
    ```
-3. no program output, branch `minimal`
+3. no program output (branch `minimal`)
    ```
    Program PMemo11111111111111111111111111111111111111 invoke [1]
    Program PMemo11111111111111111111111111111111111111 consumed 22 of 1400000 compute units
@@ -43,9 +43,9 @@ CU comsumption:
 
 | \# signers | p-memo    | p-memo (asmemo) | p-memo (minimal) | SPL Memo      |
 | ---------- | --------- | --------------- | ---------------- | ------------- |
-| 0          | 4         | 108             | 426              | 4685          |
-| 1          | 21        | 123             | 1957             | 16213         |
-| 2          | 36        | 136             | 3476             | 28133         |
+| 0          | 4         | 108             | 419              | 2022          |
+| 1          | 21        | 123             | 1821             | 13668         |
+| 2          | 36        | 136             | 3214             | 25267         |
 
 > [!NOTE]
 > Using Solana CLI `v2.2.13`.
